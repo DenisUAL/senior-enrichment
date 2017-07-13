@@ -1,0 +1,56 @@
+/*.homeView {
+    height: 100vh;
+}*/
+
+.pageTitle {
+    font-family: 'Electrolize', sans-serif;
+    color: red;
+    background-color: orange;
+    padding-left: 3%;
+    padding-right: 5%;
+    text-shadow: purple 2px 2px 10px;
+}
+
+.userPhoto {
+    height: 200px;
+}
+
+body {
+    height: 100vh;
+    background-image: url('https://raw.githubusercontent.com/DenisUAL/SolarSystemProject/master/SolarSystem/blackSpace.jpg');
+}
+
+#LOGO {
+    font-size: 5vh;
+    padding-left: 0px;
+}
+
+.menu {
+    padding-left: 3%;
+    font-family: 'Fugaz One', cursive;
+    text-shadow: blue 2px 2px 10px;
+}
+
+.sized {
+    font-size: 3vh;
+}
+
+.shad {
+    border: 8px solid rgba(0, 201, 204, 0.41);
+    border-radius: 20px;
+    box-shadow: rgba(82, 138, 165, 0.75) 1px 1px 100px;
+}
+
+.buttonContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.form {
+    padding-top: 2vh;
+}
+
+input {
+    background-color: rgba(76, 175, 80, 0) !important;
+}
