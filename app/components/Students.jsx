@@ -25,7 +25,6 @@ export default class AllStudents extends Component {
     }
 
     deleteHandler(evt){
-
         store.dispatch(deleteStudent(evt))
         axios.delete('/api/students/' + evt.id);
     }
@@ -72,7 +71,7 @@ export default class AllStudents extends Component {
                         )
                     })}
                 </ul>
-                <Link to="/new">
+                <Link to="/newStudent">
                     <div className="fixed-action-btn">
                         <a className="waves-effect waves-light btn-large orange darken-3">
                         <i className="material-icons right">school</i>add Student</a>

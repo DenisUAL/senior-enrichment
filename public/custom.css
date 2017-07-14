@@ -4,11 +4,12 @@
 
 .pageTitle {
     font-family: 'Electrolize', sans-serif;
-    color: red;
-    background-color: orange;
+    color: rgb(235, 227, 227);
+    ;
+    background-color: #30257e;
     padding-left: 3%;
     padding-right: 5%;
-    text-shadow: purple 2px 2px 10px;
+    text-shadow: #49b90b 2px 2px 10px;
 }
 
 .userPhoto {
@@ -52,5 +53,14 @@ body {
 }
 
 input {
-    background-color: rgba(76, 175, 80, 0) !important;
+    background-color: rgba(59, 91, 96, 0.47) !important;
+    color: #02f4f7 !important;
+    font-size: x-large !important;
+}
+
+.position {
+    padding-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

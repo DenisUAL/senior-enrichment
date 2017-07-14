@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 import store from '../store'
-import {getAllCampuses} from '../reducers'
+import {getAllCampuses, deleteCampus} from '../reducers'
 //import {Campus, Student} from '../../db';
 
 export default class AllCampuses extends Component {
     constructor() {
         super()
         this.state = store.getState();
+        this.deleteHandler = this.deleteHandler.bind(this);
     }
 
     componentDidMount() {
@@ -23,6 +24,11 @@ export default class AllCampuses extends Component {
         this.unsubscribe();
     }
 
+     deleteHandler(evt){
+        store.dispatch(deleteCampus(evt))
+        axios.delete('/api/campuses/' + evt.id);
+    }
+
     render() {
         if (!this.state) {
             return null
@@ -30,7 +36,7 @@ export default class AllCampuses extends Component {
 
         const campuses = this.state.campusList
         return (
-            <div className="homeView">
+            <div>
                 <h1 className="pageTitle">Margaret Hamilton Interplanetary Academy of JavaScript</h1>
                 <nav>
                     <div className="nav-wrapper pageTitle">
@@ -43,20 +49,33 @@ export default class AllCampuses extends Component {
                     </div>
                 </nav>
                 <h2 className="pageTitle">Campuses:</h2>
-                <div className="container fluid">
+                <div className="container">
                     <div className="row">
                         {campuses.map(campus => {
                             return (
                                 <div key={campus.id} className="row shad">
                                     <Link to={`/campuses/${campus.id}`}>
+                                      <div className="col s3">
                                         <img src={campus.image} style={{ hight: 250, width: 250}} />
+                                      </div>
+                                      <div className="col s6">
                                         <h2 className="menu">{campus.name}</h2>
+                                      </div>
                                     </Link>
+                                     <div style={{paddingTop: 70}} className="col s3">
+                                        <a onClick={() => this.deleteHandler(campus)} className="btn-floating btn-large waves-effect waves-light orange darken-3"><i className="material-icons">delete</i></a>
+                                    </div>
                                 </div>
                             )
                         })}
                     </div>
                 </div>
+                <Link to="/newCampus">
+                    <div className="fixed-action-btn">
+                        <a className="waves-effect waves-light btn-large orange darken-3">
+                        <i className="material-icons right">account_balance</i>add Campus</a>
+                    </div> 
+                </Link>  
             </div>
         )
     }

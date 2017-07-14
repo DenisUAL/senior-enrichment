@@ -3,22 +3,18 @@ import axios from 'axios';
 import store from '../store'
 import {Row, Input} from 'react-materialize'
 import {Link} from 'react-router-dom'
-import {getAllCampuses, addStudent} from '../reducers'
+import {getAllCampuses, addCampus} from '../reducers'
 
-export default class AddStudentForm extends Component {
+export default class AddCampusForm extends Component {
     constructor() {
         super()
         this.state = store.getState()
-        this.newStudent = {
-            name: 'TestStudent',
-            email: 'test@test.com',
-            image: 'https://lh4.ggpht.com/wKrDLLmmxjfRG2-E-k5L5BUuHWpCOe4lWRF7oVs1Gzdn5e5yvr8fj-ORTlBF43U47yI=w300',
-            campusId: 1
+        this.newCampus = {
+            name: 'TestCampus',
+            image: 'http://img10.deviantart.net/0bf7/i/2012/137/e/0/space_station_by_mysticmorning-d5049am.png'
         }
         this.nameChange = this.nameChange.bind(this);
-        this.emailChange = this.emailChange.bind(this);
         this.urlChange = this.urlChange.bind(this);
-        this.campusSelect = this.campusSelect.bind(this);
         this.submitForm = this.submitForm.bind(this);
     }
 
@@ -35,27 +31,15 @@ export default class AddStudentForm extends Component {
     }
 
     nameChange(evt){
-        this.newStudent.name = evt.target.value
-    }
-
-    emailChange(evt){
-        this.newStudent.email = evt.target.value
+        this.newCampus.name = evt.target.value
     }
 
     urlChange(evt){
-        this.newStudent.image = evt.target.value
-    }
-
-    campusSelect(evt){
-        if(evt.target.value !== 'Pick Campus'){
-            this.newStudent.campusId = evt.target.value;
-        }else{
-            alert('Pick Campus!!!!!!!!!!!');
-        }
+        this.newCampus.image = evt.target.value
     }
 
     submitForm(){
-        axios.post('/api/students', this.newStudent).then(store.dispatch.addStudent(this.newStudent));
+        axios.post('/api/campuses', this.newCampus).then(store.dispatch(addCampus(this.newCampus)));
     }
 
     render() {
@@ -64,7 +48,7 @@ export default class AddStudentForm extends Component {
             return null
         }
 
-        const campuses = this.state.campusList;
+        //const campuses = this.state.campusList;
         return (
             <div className="homeView">
              <h1 className="pageTitle">Margaret Hamilton Interplanetary Academy of JavaScript</h1>
@@ -82,18 +66,16 @@ export default class AddStudentForm extends Component {
                 <div className="row">
                     <div className="col position shad s12">
                     <Row>
-                            <Input onChange={(evt) => this.nameChange(evt)} s={5}  className="input" label="Name" />
-                            <Input onChange={(evt) => this.emailChange(evt)} s={5}  className="input" label="Email" />
-                            <Input onChange={(evt) => this.urlChange(evt)} s={10} className="input" label="Picture URL"  />
+                            <Input onChange={(evt) => this.nameChange(evt)} s={10}  label="Name" />
+                            <Input onChange={(evt) => this.urlChange(evt)} s={10} label="Picture URL"  />
                     </Row>
                     <Row className="center">
-                        <Input onChange={(evt) => this.campusSelect(evt)} s={12} type='select' label="Select campus">
-                         <option className="menu input sized" defaultValue>Pick Campus</option>
-                            {campuses.map(campus => <option className="menu input sized" key={campus.id} value={campus.id}>{campus.name}</option>)}
-                        </Input>
-                        <div onClick={this.submitForm} className="action-btn input lg">
+                        {/*<Input s={12} type='select' label="Select campus">
+                            {campuses.map(campus => <option className="menu input sized" key={campus.id}>{campus.name}</option>)}
+                        </Input>*/}
+                        <div onClick={this.submitForm} className="action-btn lg">
                             <a className="waves-effect waves-light btn-large orange darken-3">
-                            <i className="material-icons right">school</i>add Student</a>
+                            <i className="material-icons right">school</i>add Campus</a>
                         </div> 
                     </Row>
                     </div>
