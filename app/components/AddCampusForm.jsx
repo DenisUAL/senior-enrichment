@@ -48,7 +48,6 @@ export default class AddCampusForm extends Component {
             return null
         }
 
-        //const campuses = this.state.campusList;
         return (
             <div className="homeView">
              <h1 className="pageTitle">Margaret Hamilton Interplanetary Academy of JavaScript</h1>
