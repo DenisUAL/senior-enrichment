@@ -2,6 +2,12 @@
     height: 100vh;
 }*/
 
+.customText {
+    font-family: 'Electrolize', sans-serif;
+    color: rgb(235, 227, 227);
+    text-shadow: #49b90b 2px 2px 10px;
+}
+
 .pageTitle {
     font-family: 'Electrolize', sans-serif;
     color: rgb(235, 227, 227);
